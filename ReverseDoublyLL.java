@@ -1,5 +1,6 @@
 package git;
 import java.util.Scanner;
+
 public class ReverseDoublyLL 
 {
 	   static Node head;
@@ -37,7 +38,25 @@ public class ReverseDoublyLL
 		   return l;
 	   }
 	   
-	   public static void displayRev(ReverseDoublyLL l)
+	   public static ReverseDoublyLL reverse(ReverseDoublyLL l)
+	   {
+		   Node last=l.head;
+		   Node curr=last.next;
+		   while(curr!=null)
+		   {
+			   Node temp=last.prev;
+			   last.prev=last.next;
+			   last.next=temp;
+			   last=curr;
+			   curr=curr.next;
+		   }
+		   last.next=last.prev;
+		   last.prev=null;
+		   l.head=last;
+		   return l;
+	   }
+	   
+	   public static void display(ReverseDoublyLL l)
 	   {
 		   if(l.head==null)
 		   {
@@ -46,16 +65,11 @@ public class ReverseDoublyLL
 		   else
 		   {
 		   Node last=l.head;
-		   while(last.next!=null)
-		   {
-			   last=last.next;
-		   }
-		   while(last.prev!=null)
+		   while(last!=null)
 		   {
 			   System.out.print(last.data+" ");
-			   last=last.prev;
+			   last=last.next;
 		   }
-		    System.out.print(last.data+" ");
 		   }
 	   }
 	   
@@ -71,6 +85,7 @@ public class ReverseDoublyLL
         	int ele=in.nextInt();
         	l=insert(l,ele);
                 }
-                displayRev(l);
+                l=reverse(l);
+                display(l);
 	}
 }
