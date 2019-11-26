@@ -5,9 +5,9 @@ public class RecursiveDuplicateRemoval
 {
     public static char[] removeDuplicate(String s,int i,int n,char []arr,int j)
     {
-    	if(i<n)
+    	if(i<=n)
     	{
-    		if(s.charAt(i)==s.charAt(i+1))
+    		if(i<=n-1 && s.charAt(i)==s.charAt(i+1))
     		{
     			while(i<n && s.charAt(i)==s.charAt(i+1))
     			{
@@ -24,7 +24,7 @@ public class RecursiveDuplicateRemoval
     		}
     	}
     	return arr;
-      }
+    }
 	
 	public static void main(String[] args) 
 	{
@@ -34,6 +34,7 @@ public class RecursiveDuplicateRemoval
 		int n=s.length()-1;
 		char arr[]=new char[n];
 		char a[]=removeDuplicate(s,0,n,arr,0);
-                System.out.println(a);
+        System.out.println(a);
 	}
+
 }
